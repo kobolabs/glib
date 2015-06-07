@@ -1,3 +1,11 @@
+Kobo build
+==========
+./autogen.sh
+CFLAGS="-I/chroot/include" LDFLAGS="-L/chroot/lib" LIBS="-liconv -lgettextlib -lgettextpo -lgettextsrc -ldl" ./configure --prefix= --with-sysroot=/chroot --host=arm-linux --disable-man --disable-silent-rules --disable-static --with-libiconv=gnu --disable-libmount --disable-libelf --with-pcre=internal glib_cv_stack_grows=yes glib_cv_uscore=no ac_cv_func_posix_getpwuid_r=yes ac_cv_func_posix_getgrgid_r=yes
+make -j4
+make DESTDIR=/chroot install
+cp glib/glibconfig.h /chroot/include
+
 General Information
 ===================
 
